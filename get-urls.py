@@ -26,11 +26,6 @@ for i in range(1, 7):
 chap_list2 = chap_list[::2]
 link_list2 = link_list[::2]
 
-print(chap_list2[0:10])
-print(link_list2[0:10])
-print(len(link_list2))
-print(len(chap_list2))
-
 all_text = []
 for link in link_list2:
     url = link

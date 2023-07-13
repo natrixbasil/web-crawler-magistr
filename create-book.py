@@ -23,9 +23,6 @@ for i in range(1, 7):
 
 chap_list2 = chap_list[::2]
 
-print(chap_list2[0:10])
-print(len(chap_list2))
-
 # Create an ePub book
 book = epub.EpubBook()
 
@@ -80,55 +77,3 @@ for chapter in book.get_items_of_type(epub.EpubHtml):
 
 # Generate the ePub file
 epub.write_epub('Мосян_Тунсю_Магистр_Дьявольского_Культа.epub', book, {})
-
-
-# # Create an ePub book
-# book = epub.EpubBook()
-#
-# # Set the metadata
-# book.set_title('Мосян Тунсю - Магистр Дьявольского Культа')
-# book.set_language('en')
-#
-# for chapter_name in chap_list2:
-#     # Define the filename based on the chapter name
-#     filename = f"{chapter_name.replace(' ', '_').lower()}.html"
-#
-#     # Read the content from the file
-#     with open(filename, 'r', encoding='utf-8') as file:
-#         content = file.read()
-#         print(len(content))
-#
-#     # Create an ePub item for each chapter
-#     chapter = epub.EpubHtml(title=chapter_name, file_name=filename, content=content)
-#
-#     # Add the chapter to the book
-#     book.add_item(chapter)
-#
-#     # Add the chapter to the table of contents
-#     book.toc.append(chapter)
-#
-# # Add navigation files
-# book.add_item(epub.EpubNcx())
-# book.add_item(epub.EpubNav())
-#
-# # Set the CSS styles
-# style = '''
-#     body {
-#         font-family: Arial, sans-serif;
-#         font-size: 21px;
-#         line-height: 1.5;
-#     }
-# '''
-#
-# # Add CSS to the book
-# book.add_item(epub.EpubItem(uid="style_default", file_name="style/default.css", content=style))
-#
-# # Set the CSS for the chapters
-# for chapter in book.get_items_of_type(epub.EpubHtml):
-#     chapter.add_link(href="style/default.css", rel="stylesheet", type="text/css")
-#
-# # Define the order of items
-# book.spine = book.get_items_of_type(epub.EpubHtml)
-#
-# # Generate the ePub file
-# epub.write_epub('Мосян_Тунсю_Магистр_Дьявольского_Культа.epub', book, {})
